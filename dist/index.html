@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智学通 - 个性化学习辅助系统</title>
+    <!-- 引入 Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* 使用引入的字体 */
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            /* 修改图片路径 */
+            background-image: url('src/assets/img/campus.png'); 
+            background-size: cover; /* 使图片覆盖整个背景 */
+            background-position: center; /* 图片居中显示 */
+        }
+
+        header {
+            background-color: #0077b6;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .entry-button {
+            display: inline-block;
+            background-color: lightgreen; /* 为浅绿色按钮 */
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border: 2px solid #0054a6; /* 设置边框 */
+            border-radius: 5px;
+            margin: 0 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 0 #0054a6; /* 设置阴影 */
+            position: relative;
+            top: 0;
+        }
+
+        .entry-button:hover {
+            background-color: #023e8a;
+            transform: scale(1.05);
+            box-shadow: 0 2px 0 #0054a6; /* 悬停时调整阴影 */
+            top: 2px;
+        }
+
+        section {
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 800px;
+            width: 800px; /* 统一宽度 */
+            background-color: rgba(250, 235, 215, 0.5); /* 半透明淡米色 */
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+            text-align: center; /* 添加居中对齐属性 */
+        }
+        /* 添加flex布局 */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        section:nth-of-type(1) {
+            text-align: center;
+        }
+        section:nth-of-type(2), section:nth-of-type(3) {
+            /* float: right; 删除浮动属性 */
+            text-align: center;
+            margin-top: 30px; /* 与关于我们条目对齐 */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>智学通 - 个性化学习辅助系统</h1>
+        <a href="teacher_entry.html" class="entry-button">教师入口</a>
+        <a href="/qbot-api-demo/web_project/login.html" class="entry-button">学生入口</a>
+    </header>
+    <section>
+        <h2>关于我们</h2>
+        <p>智能体“智学通”，依托DeepSeek先进人工智能技术，为教师和学生打造定制化学习路径的个性化学习辅助系统。凭借专业知识与算法，深度剖析学生在学习能力、知识基础、学习风格及兴趣爱好等多维度状况，为教师制定科学教学方案，为学生提供精准且具针对性的学习建议与方案，全力提升教师教学能力与学生学习效率。</p>
+    </section>
+    <section>
+        <h2>为教师服务</h2>
+        <p>可以使用我们提供的各项功能，为教师提供科学的教学方案，帮助教师更好地了解学生的学习情况，提高教学质量。</p>
+    </section>
+    <section>
+        <h2>为学生服务</h2>
+        <p>利用人工智能为学生提供精准且具针对性的学习建议与方案，帮助学生提高学习效率，实现个性化学习。</p>
+    </section>
+</body>
+
+</html>
