@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智学通 - AI 问答</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            /* 修改图片路径 */
+            background-image: url('../src/assets/img/campus.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .qa-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 600px;
+        }
+
+        .qa-container h2 {
+            text-align: center;
+        }
+
+        .question-input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .answer-output {
+            min-height: 100px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #fff;
+            white-space: pre-wrap; /* 保留换行格式 */
+            /* 添加以下两行代码实现固定高度和滚动条 */
+            max-height: 200px; 
+            overflow-y: auto; 
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0077b6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background-color: #023e8a;
+        }
+          /* 新增问题展示样式 */
+        .question-display {
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #e3f2fd;
+            border-radius: 5px;
+}
+
+/* 调整答案区域样式 */
+        .answer-output {
+            min-height: 100px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #fff;
+            white-space: pre-wrap; /* 保留换行格式 */
+            /* 添加以下两行代码实现固定高度和滚动条 */
+            max-height: 200px; 
+            overflow-y: auto; 
+        }
+    </style>
+</head>
+
+<body>
+    <div class="qa-container">
+        <h2>智学通 AI 问答</h2>
+        
+        <!-- 新增问题展示区域 -->
+        <div class="question-display" id="questionDisplay"></div>
+        
+        <input type="text" class="question-input" id="questionInput" placeholder="请输入你的问题">
+        <button class="submit-button" onclick="askQuestion()">提交问题</button>
+        
+        <!-- 修改答案展示区域 -->
+        <div class="answer-output" id="answerOutput"></div>
+    </div>
+    <script>
+        async function askQuestion() {
+            const question = document.getElementById('questionInput').value;
+            if (!question) {
+                alert('请输入问题');
+                return;
+            }
+
+            // 清空旧内容
+            document.getElementById('answerOutput').innerHTML = '思考中...';
+            
+            try {
+                const response = await fetch('http://localhost:3000/ask', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question: question })
+                });
+
+                const data = await response.json();
+
+                if (data.error) {
+                    document.getElementById('answerOutput').innerHTML = `错误：${data.error}`;
+                } else {
+                    // 同时显示问题和答案
+                    document.getElementById('questionDisplay').innerHTML = 
+                        `<strong>你的问题：</strong>${data.question}`;
+                    document.getElementById('answerOutput').innerHTML = 
+                        `<strong>AI 回答：</strong>${data.answer}`;
+                }
+            } catch (error) {
+                document.getElementById('answerOutput').innerHTML = '请求失败，请检查网络';
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录页面</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            background-image: url('../src/assets/img/campus.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px; /* 增加内边距，让内容更宽松 */
+            border-radius: 15px; /* 增大圆角 */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* 增强阴影效果 */
+            width: 350px; /* 适当增大宽度 */
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px; /* 增加标题下方的间距 */
+        }
+
+        .login-container input {
+            width: 100%; /* 直接设置为 100%，使用 box-sizing 来处理内边距和边框 */
+            padding: 12px; /* 增加输入框内边距 */
+            margin: 15px 0; /* 增加输入框上下间距 */
+            border: 1px solid #ddd; /* 调整边框颜色 */
+            border-radius: 8px; /* 增大输入框圆角 */
+            box-sizing: border-box; /* 确保内边距和边框包含在宽度内 */
+            transition: border-color 0.3s ease; /* 添加边框颜色过渡效果 */
+        }
+
+        .login-container input:focus {
+            border-color: #0077b6; /* 输入框聚焦时改变边框颜色 */
+            outline: none; /* 去除默认的聚焦轮廓 */
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 12px; /* 增加按钮内边距 */
+            background-color: #0077b6;
+            color: white;
+            border: none;
+            border-radius: 8px; /* 增大按钮圆角 */
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* 添加背景颜色过渡效果 */
+            margin-top: 20px; /* 增加按钮上方间距 */
+        }
+
+        .login-container button:hover {
+            background-color: #023e8a;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 20px; /* 增加注册链接上方间距 */
+        }
+
+        .register-link a {
+            color: #0077b6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>登录</h2>
+        <input type="text" id="username" placeholder="账号">
+        <input type="password" id="password" placeholder="密码">
+        <button onclick="login()">登录</button>
+        <div class="register-link">
+            还没有账号？<a href="register.html">注册</a>
+        </div>
+    </div>
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            if (username === '123456' && password === '123456') {
+                alert('登录成功');
+                // 添加跳转到 dashboard.html 的逻辑
+                window.location.href = 'dashboard.html';
+            } else {
+                alert('账号或密码错误');
+            }
+        }
+    </script>
+</body>
+
+</html>
